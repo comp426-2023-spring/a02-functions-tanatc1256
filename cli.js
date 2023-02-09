@@ -54,9 +54,9 @@ if (days == 0) {
 	console.log("today's precipitation is " + data.daily.precipitation_hours[0]);
 }
 else if (days > 1) {
-	console.log("in" + days + "days, the [recipitation would be " + data.daily.precipitation[days]);
+	console.log("in" + days + "days, the [recipitation would be " + data.daily.precipitation_hours[days]);
 }
 else {
-	console.log("tomorrow's precipitation is " + data.daily.precipitation[1]);
+	console.log("tomorrow's precipitation is " + data.daily.precipitation_hours[1]);
 }
 
