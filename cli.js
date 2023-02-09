@@ -18,8 +18,8 @@ if (args.h) {
 
 const timezone = moment.tz.guess();
 
-const latitute = 0.00;
-const longitute = 0.00;
+let latitute = 0.0;
+let longitute = 0.0;
 
 if (args.n) {
 	latitute = args.n;
@@ -40,11 +40,11 @@ if (args.z) {
 	timezone = args.z;
 }
 
-const response = await fetch('https://ai.open-meteo.com/v1/forecast?latitute=' + latitute + '&longitute=' + longitute);
+const response = await fetch('https://api.open-meteo.com/v1/forecast?latitute=' + latitute + '&longitute=' + longitute);
 const data = await response.json();
 
 if (args.j) {
-	data = args.j;
+	console.log(data);
 	process.exit(0);
 }
 
