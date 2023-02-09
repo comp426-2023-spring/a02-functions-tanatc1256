@@ -16,7 +16,7 @@ if (args.h) {
 	 process.exit(0);
 }
 
-const timezone = moment.tz.guess();
+let timezone = moment.tz.guess();
 
 let latitude = 0.0;
 let longitude = 0.0;
@@ -40,7 +40,7 @@ if (args.z) {
 	timezone = args.z;
 }
 
-const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&hourly=temperature_2m,relativehumidity_2m,precipitation, windspeed_10m,winddirection_10m');
+const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&hourly=temperature_2m,relativehumidity_2m,precipitation,windspeed_10m,winddirection_10m');
 const data = await response.json();
 
 if (args.j) {
