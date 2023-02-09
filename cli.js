@@ -18,14 +18,14 @@ if (args.h) {
 
 const timezone = moment.tz.guess();
 
-const latitute;
-const longitute:
+const latitute = 0.00;
+const longitute = 0.00;
 
 if (args.n) {
 	latitute = args.n;
 }
 else if (args.s) {
-	lattitute = -1 * (args.s);
+	latitute = -1 * (args.s);
 }
 
 
@@ -40,7 +40,7 @@ if (args.z) {
 	timezone = args.z;
 }
 
-const response = await fetch('https://ai.open-meteo.com/v1/forecast?latitute=' + latitute + '&longitute=' longitute);
+const response = await fetch('https://ai.open-meteo.com/v1/forecast?latitute=' + latitute + '&longitute=' + longitute);
 const data = await response.json();
 
 if (args.j) {
@@ -48,15 +48,15 @@ if (args.j) {
 	process.exit(0);
 }
 
-const days = args.d
+const days = args.d;
 
 if (days == 0) {
-	console.log("today.");
+	console.log("today's precipitation is " + data.daily.precipitation_hours[0]);
 }
 else if (days > 1) {
-	console =.log("in" + days + "days.");
+	console.log("in" + days + "days, the [recipitation would be " + data.daily.precipitation[days]);
 }
 else {
-	console.log("tomorrow.");
+	console.log("tomorrow's precipitation is " + data.daily.precipitation[1]);
 }
 
