@@ -8,8 +8,8 @@ const args = minimist(process.argv.slice(2));
 if (args.h) {
 	 console.log("Usage: galosh.js [options] -[n|s] LATITUTE -[e|w] LONGITUTE -z TIME_ZONE");
          console.log("    -h	          Show this help message and exit.");
-	 console.log("    -n, -s	  Latitute: N positive, S negative.");
-	 console.log("    -e, -w	  Longitute: E positive, W negative.");
+	 console.log("    -n, -s	  Latitude: N positive, S negative.");
+	 console.log("    -e, -w	  Longitude: E positive, W negative.");
 	 console.log("    -z            Time zone: uses tz.guess() from moment-timezone by default.");
 	 console.log("    -d 0-6        Day to retrieve weather: 0 is today; defaults to 1.");
 	 console.log("    -j            Echo pretty JSON from open-meteo API and exit.");
@@ -18,22 +18,22 @@ if (args.h) {
 
 const timezone = moment.tz.guess();
 
-let latitute = 0.0;
-let longitute = 0.0;
+let latitude = 0.0;
+let longitude = 0.0;
 
 if (args.n) {
-	latitute = args.n;
+	latitude = args.n;
 }
 else if (args.s) {
-	latitute = -1 * (args.s);
+	latitude = -1 * (args.s);
 }
 
 
 if (args.e) {
-	longitute = args.e;
+	longitude = args.e;
 }
 else if (args.w) {
-	longitute = -1 * (args.w);
+	longitude = -1 * (args.w);
 }
 
 if (args.z) {
@@ -51,12 +51,12 @@ if (args.j) {
 const days = args.d;
 
 if (days == 0) {
-	console.log("today's precipitation is " + data.daily.precipitation_hours[0]);
+	console.log("today");
 }
 else if (days > 1) {
-	console.log("in" + days + "days, the [recipitation would be " + data.daily.precipitation_hours[days]);
+	console.log("in" + days + "days");
 }
 else {
-	console.log("tomorrow's precipitation is " + data.daily.precipitation_hours[1]);
+	console.log("tomorrow");
 }
 
